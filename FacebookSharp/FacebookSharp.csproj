@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PackageId>CMS365.FacebookSharp</PackageId>
+    <Title>FacebookSharp</Title>
+    <Authors>Shafaqat Ali</Authors>
+    <Company>CMS365 PTY LTD</Company>
+    <Description>A .NET C# wrapper for facebook graph API</Description>
+    <PackageTags>facebook;.net;c#;graph</PackageTags>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
+    <Version>6.17.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="RestSharp" Version="110.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="readme.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
