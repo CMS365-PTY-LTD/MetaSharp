@@ -11,9 +11,15 @@ namespace FacebookSharp
         {
             this.accessToken = longLivedAccessToken;
         }
-        public async Task<JObject> GetPageDetailsAsync(string pageId)
+        /// <summary>
+        /// Gets page detail information
+        /// </summary>
+        /// <param name="pageId">Page Id</param>
+        /// <param name="fields">Comma separated list of fields you want to retrieve</param>
+        /// <returns></returns>
+        public async Task<JObject> GetPageDetailsAsync(string pageId, string fields = "")
         {
-            return await new PageController(this.accessToken).GetPageDetailsAsync(pageId);
+            return await new PageController(this.accessToken).GetPageDetailsAsync(pageId, fields);
         }
         public async Task<JObject> PostFeedAsync(string pageId, PageFeedRequestContent pageFeedRequestContent)
         {
