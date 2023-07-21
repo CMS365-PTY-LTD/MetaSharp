@@ -10,8 +10,8 @@ Install-Package CMS365.FacebookSharp
 # API support
 
 | FacebookSharp version (.NET version) | Facebook Graph API version | Build versions
-| -------------------- | ------------------- |
-| 6 | 17  | x
+| -------------------- | ------------------- |----------------------- |
+| 6                    | 17                  | x                      |
 
 FacebookSharp currently supports the following Facebook Graph APIs:
 
