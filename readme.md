@@ -9,7 +9,7 @@ Install-Package CMS365.FacebookSharp
 ```
 # API support
 
-| FacebookSharp version (.NET version) | Facebook Graph API version | Build versions
+| FacebookSharp version | Facebook Graph API version | Build versions
 | -------------------- | ------------------- |----------------------- |
 | 6                    | 17                  | x                      |
 

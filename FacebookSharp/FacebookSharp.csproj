@@ -1,17 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageId>CMS365.FacebookSharp</PackageId>
     <Title>FacebookSharp</Title>
     <Authors>Shafaqat Ali</Authors>
     <Company>CMS365 PTY LTD</Company>
-    <Description>FacebookSharp is a .NET library that enables you to authenticate and make graph API calls to Facebook. It's used for posting feeds and contents on Facebook using C# and .NET</Description>
+    <Description>FacebookSharp is a .NET library that enables you to authenticate and make graph API
+      calls to Facebook. It's used for posting feeds and contents on Facebook using C# and .NET</Description>
     <PackageTags>facebook;.net;c#;graph</PackageTags>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
-    <Version>6.17.2</Version>
+    <Version>6.17.3</Version>
     <PackageProjectUrl>https://github.com/shafaqat-ali-cms365/FacebookSharp</PackageProjectUrl>
     <RepositoryUrl>https://github.com/shafaqat-ali-cms365/FacebookSharp.git</RepositoryUrl>
   </PropertyGroup>
