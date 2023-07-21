@@ -5,3 +5,4 @@
 /.vs
 /FacebookSharp/obj
 /FacebookSharp/bin/Debug/net6.0
+/FacebookSharp/bin/Release

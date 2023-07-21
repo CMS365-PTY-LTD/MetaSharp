@@ -2,7 +2,7 @@
 {
     public class PageFeedRequestContent
     {
-        public string[] PhotoUrls { get; set; }
-        public string[] MessageLines { get; set; }
+        public IEnumerable<string> PhotoUrls { get; set; }
+        public IEnumerable<string> MessageLines { get; set; }
     }
 }

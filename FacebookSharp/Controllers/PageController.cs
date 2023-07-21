@@ -38,7 +38,7 @@ namespace FacebookSharp.Controllers
                 return new JObject(new { message = ex.Message });
             }
         }
-        private string formatImageLinks(string[] imageIds)
+        private string formatImageLinks(IEnumerable<string> imageIds)
         {
             var formattedStringArray = imageIds.Select((r, i) => "attached_media[" + i + "]={\"media_fbid\":\"" + r + "\"}");
             return string.Join("&", formattedStringArray);

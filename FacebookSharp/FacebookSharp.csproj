@@ -8,11 +8,20 @@
     <Title>FacebookSharp</Title>
     <Authors>Shafaqat Ali</Authors>
     <Company>CMS365 PTY LTD</Company>
-    <Description>A .NET C# wrapper for facebook graph API</Description>
+    <Description>FacebookSharp is a .NET library that enables you to authenticate and make graph API calls to Facebook. It's used for posting feeds and contents on Facebook using C# and .NET</Description>
     <PackageTags>facebook;.net;c#;graph</PackageTags>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
-    <Version>6.17.0</Version>
+    <Version>6.17.2</Version>
+    <PackageProjectUrl>https://github.com/shafaqat-ali-cms365/FacebookSharp</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/shafaqat-ali-cms365/FacebookSharp.git</RepositoryUrl>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\readme.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />

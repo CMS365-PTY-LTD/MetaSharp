@@ -72,10 +72,10 @@ var pageDetail = await facebookController.GetPageDetailsAsync("[PAGE_ID]");
 ```
 ### Post with multiline text and images
 ```C#
-var pageDetails = await facebookController.PostFeedAsync("[PAGE_ID]", new FacebookSharp.Entities.PageFeedRequestContent()
+var postDetails = await facebookController.PostFeedAsync("[PAGE_ID]", new FacebookSharp.Entities.PageFeedRequestContent()
 {
-    MessageLines = new string[3] { "Loose Mineral Foundation Shade", "https://google.com","$20" },
-    PhotoUrls= new string[1] { "https://cdn.pixabay.com/photo/2017/09/01/00/15/png-2702691_640.png" }
+    MessageLines = new List<string>() { "Loose Mineral Foundation Shade", "https://google.com","$20" },
+    PhotoUrls= new List<string>() { "https://cdn.pixabay.com/photo/2017/09/01/00/15/png-2702691_640.png" }
 });
 ```
 
