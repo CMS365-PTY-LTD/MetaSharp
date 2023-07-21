@@ -1,4 +1,6 @@
 # FacebookSharp: A .NET library for Facebook Graph API.
+[![NuGet](https://img.shields.io/nuget/v/CMS365.FacebookSharp.svg?maxAge=3600)](https://www.nuget.org/packages/CMS365.FacebookSharp/)
+
 FacebookSharp is a .NET library that enables you to authenticate and make graph API calls to Facebook. It's used for posting feeds and contents on Facebook using C# and .NET
 # Installation
 FacebookSharp is [available on NuGet](https://www.nuget.org/packages/CMS365.FacebookSharp/). Use the package manager
@@ -69,6 +71,11 @@ var facebookController = new FacebookSharp.FacebookController("EAASZAbmgGb7YBAFW
 ### Get page details
 ```C#
 var pageDetail = await facebookController.GetPageDetailsAsync("[PAGE_ID]");
+```
+You can also pass page fields you want to get, list of fields applicable to a page is available at https://developers.facebook.com/docs/graph-api/reference/page/
+### Get page details
+```C#
+var pageDetail = await facebookController.GetPageDetailsAsync("[PAGE_ID]","name,about,link,cover");
 ```
 ### Post with multiline text and images
 ```C#
