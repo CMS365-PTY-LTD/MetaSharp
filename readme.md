@@ -1,4 +1,6 @@
 # FacebookSharp: A .NET library for Facebook Graph API.
+[![NuGet](https://img.shields.io/nuget/v/CMS365.FacebookSharp.svg?maxAge=3600)](https://www.nuget.org/packages/CMS365.FacebookSharp/)
+
 FacebookSharp is a .NET library that enables you to authenticate and make graph API calls to Facebook. It's used for posting feeds and contents on Facebook using C# and .NET
 # Installation
 FacebookSharp is [available on NuGet](https://www.nuget.org/packages/CMS365.FacebookSharp/). Use the package manager
