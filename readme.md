@@ -73,7 +73,6 @@ var facebookController = new FacebookSharp.FacebookController("EAASZAbmgGb7YBAFW
 var pageDetail = await facebookController.GetPageDetailsAsync("[PAGE_ID]");
 ```
 You can also pass page fields you want to get, list of fields applicable to a page is available at https://developers.facebook.com/docs/graph-api/reference/page/
-### Get page details
 ```C#
 var pageDetail = await facebookController.GetPageDetailsAsync("[PAGE_ID]","name,about,link,cover");
 ```
