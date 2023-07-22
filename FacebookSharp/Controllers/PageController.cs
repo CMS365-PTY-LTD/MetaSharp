@@ -1,7 +1,6 @@
 ﻿using FacebookSharp.Entities;
 using Newtonsoft.Json.Linq;
 using RestSharp;
-using System.Globalization;
 
 namespace FacebookSharp.Controllers
 {
@@ -12,7 +11,7 @@ namespace FacebookSharp.Controllers
         {
             accessToken = longLivedAccessToken;
         }
-        public async Task<JObject> GetPageDetailsAsync(string pageId)
+        public async Task<JObject> GetPageDetailsAsync(string pageId, string fields)
         {
             try
             {
@@ -21,7 +20,9 @@ namespace FacebookSharp.Controllers
                     MaxTimeout = -1,
                 };
                 var client = new RestClient(options);
-                var request = new RestRequest($"/{pageId}?access_token={accessToken}&fields=name,about", Method.Get);
+                string fieldsInfo = string.IsNullOrEmpty(fields) ? "" : $"&fields={fields}";
+                string requestUrl = $"/{pageId}?access_token={accessToken}{(string.IsNullOrEmpty(fieldsInfo) ? "" : fieldsInfo)}";
+                var request = new RestRequest(requestUrl, Method.Get);
                 var response = await client.ExecuteAsync(request);
                 if (response.IsSuccessful)
                 {
@@ -55,10 +56,9 @@ namespace FacebookSharp.Controllers
                 List<string> tempPictureUploadIds = new List<string>();
                 if (pageFeedRequestContent.PhotoUrls!=null && pageFeedRequestContent.PhotoUrls.Any())
                 {
-                    var photo = new Photo(accessToken);
                     foreach (var photoUrl in pageFeedRequestContent.PhotoUrls)
                     {
-                        tempPictureUploadIds.Add(await photo.UploadImageTempAsync(pageId, photoUrl));
+                        tempPictureUploadIds.Add(await UploadImageTempAsync(photoUrl));
                     }
                 }
                 string formattedString = formatImageLinks(tempPictureUploadIds.ToArray());
@@ -84,6 +84,34 @@ namespace FacebookSharp.Controllers
                 throw new Exception(ex.Message);
             }
         }
+        private async Task<string> UploadImageTempAsync(string photoUrl)
+        {
+            try
+            {
+                var options = new RestClientOptions("https://graph.facebook.com")
+                {
+                    MaxTimeout = -1,
+                };
+                var client = new RestClient(options);
+                var request = new RestRequest($"/me/photos?access_token={accessToken}&url={photoUrl}&published=false", Method.Post);
+                var response = await client.ExecuteAsync(request);
+                if (response.IsSuccessful)
+                {
+                    if (string.IsNullOrEmpty(response.Content))
+                    {
+                        throw new Exception("No content found.");
+                    }
+                    var id = JObject.Parse(response.Content)["id"];
+
+                    return id == null ? "" : id.ToString();
+                }
+                throw new Exception($"Error, {response.Content}");
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
         class Photo
         {
             private string accessToken;
@@ -91,34 +119,7 @@ namespace FacebookSharp.Controllers
             {
                 accessToken = longLivedAccessToken;
             }
-            public async Task<string> UploadImageTempAsync(string pageId, string photoUrl)
-            {
-                try
-                {
-                    var options = new RestClientOptions("https://graph.facebook.com")
-                    {
-                        MaxTimeout = -1,
-                    };
-                    var client = new RestClient(options);
-                    var request = new RestRequest($"/me/photos?access_token={accessToken}&url={photoUrl}&published=false", Method.Post);
-                    var response = await client.ExecuteAsync(request);
-                    if (response.IsSuccessful)
-                    {
-                        if (string.IsNullOrEmpty(response.Content))
-                        {
-                            throw new Exception("No content found.");
-                        }
-                        var id = JObject.Parse(response.Content)["id"];
-
-                        return id == null ? "" : id.ToString();
-                    }
-                    throw new Exception($"Error, {response.Content}");
-                }
-                catch (Exception ex)
-                {
-                    return ex.Message;
-                }
-            }
+            
         }
     }
 }
