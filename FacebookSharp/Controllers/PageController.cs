@@ -1,4 +1,5 @@
 ﻿using FacebookSharp.Entities;
+using FacebookSharp.Source;
 using Newtonsoft.Json.Linq;
 using RestSharp;
 
@@ -11,11 +12,14 @@ namespace FacebookSharp.Controllers
         {
             accessToken = longLivedAccessToken;
         }
+
+        #region PAGE
+
         public async Task<JObject> GetPageDetailsAsync(string pageId, string fields)
         {
             try
             {
-                var options = new RestClientOptions("https://graph.facebook.com")
+                var options = new RestClientOptions(Constants.GRAPH_API_URL)
                 {
                     MaxTimeout = -1,
                 };
@@ -48,13 +52,13 @@ namespace FacebookSharp.Controllers
         {
             try
             {
-                if (pageFeedRequestContent==null ||
-                    ((pageFeedRequestContent.PhotoUrls==null || pageFeedRequestContent.PhotoUrls.Any()==false) && (pageFeedRequestContent.MessageLines==null || pageFeedRequestContent.MessageLines.Any()==false)))
+                if (pageFeedRequestContent == null ||
+                    ((pageFeedRequestContent.PhotoUrls == null || pageFeedRequestContent.PhotoUrls.Any() == false) && (pageFeedRequestContent.MessageLines == null || pageFeedRequestContent.MessageLines.Any() == false)))
                 {
                     throw new Exception("you must pass some content to post");
                 }
                 List<string> tempPictureUploadIds = new List<string>();
-                if (pageFeedRequestContent.PhotoUrls!=null && pageFeedRequestContent.PhotoUrls.Any())
+                if (pageFeedRequestContent.PhotoUrls != null && pageFeedRequestContent.PhotoUrls.Any())
                 {
                     foreach (var photoUrl in pageFeedRequestContent.PhotoUrls)
                     {
@@ -62,7 +66,7 @@ namespace FacebookSharp.Controllers
                     }
                 }
                 string formattedString = formatImageLinks(tempPictureUploadIds.ToArray());
-                var options = new RestClientOptions("https://graph.facebook.com")
+                var options = new RestClientOptions(Constants.GRAPH_API_URL)
                 {
                     MaxTimeout = -1,
                 };
@@ -88,7 +92,7 @@ namespace FacebookSharp.Controllers
         {
             try
             {
-                var options = new RestClientOptions("https://graph.facebook.com")
+                var options = new RestClientOptions(Constants.GRAPH_API_URL)
                 {
                     MaxTimeout = -1,
                 };
@@ -112,14 +116,7 @@ namespace FacebookSharp.Controllers
                 return ex.Message;
             }
         }
-        class Photo
-        {
-            private string accessToken;
-            public Photo(string longLivedAccessToken)
-            {
-                accessToken = longLivedAccessToken;
-            }
-            
-        }
+
+        #endregion
     }
 }

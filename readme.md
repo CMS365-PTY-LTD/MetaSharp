@@ -49,7 +49,7 @@ You will get a response like
     "expires_in": 5182228
 }
 ```
-We will get an access_token which is along lives user token and can be used for Facebook Graph api for user level operations but we to generate a page token so that we can perform action on a Facebook page.
+We will get an access_token which is long lived user token and can be used for Facebook Graph api for user level operations but we have to generate a page token so that we can perform action on a Facebook page.
 ```C#
 https://graph.facebook.com/FACEBOOK_PAGE_ID?fields=access_token&access_token=LONG_LIVED_USER_TOKEN
 ```
@@ -60,13 +60,14 @@ https://graph.facebook.com/FACEBOOK_PAGE_ID?fields=access_token&access_token=LON
     "id": "111444904022049"
 }
 ```
-We have now got a page token which we will use to perform action on a Facebook page.
+We have now got a page token which we will use to perform actions on a Facebook page.
 
 ## Using the FacebookSharp
  Initialize the instance with the page token
 ```C#
 var facebookController = new FacebookSharp.FacebookController("EAASZAbmgGb7YBAFWM3uNUKan1ZBTf4rIAQiLzPSNMa7Lm3Ak1R8tNAVwsORl0LZAcPNEURzFgl6");
 ```
+
 ## Page
 ### Get page details
 ```C#
@@ -83,6 +84,12 @@ var postDetails = await facebookController.PostFeedAsync("[PAGE_ID]", new Facebo
     MessageLines = new List<string>() { "Loose Mineral Foundation Shade", "https://google.com","$20" },
     PhotoUrls= new List<string>() { "https://cdn.pixabay.com/photo/2017/09/01/00/15/png-2702691_640.png" }
 });
+```
+## General Graph API methods
+You can call direct graph API method If there is no mapping available. For example
+### Get
+```C#
+var pageInfo = await facebookController.Get("/[apge_id]?fields=name,about,link,cover");
 ```
 
 
