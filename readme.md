@@ -67,6 +67,7 @@ We have now got a page token which we will use to perform actions on a Facebook 
 ```C#
 var facebookController = new FacebookSharp.FacebookController("EAASZAbmgGb7YBAFWM3uNUKan1ZBTf4rIAQiLzPSNMa7Lm3Ak1R8tNAVwsORl0LZAcPNEURzFgl6");
 ```
+
 ## Page
 ### Get page details
 ```C#
@@ -83,6 +84,12 @@ var postDetails = await facebookController.PostFeedAsync("[PAGE_ID]", new Facebo
     MessageLines = new List<string>() { "Loose Mineral Foundation Shade", "https://google.com","$20" },
     PhotoUrls= new List<string>() { "https://cdn.pixabay.com/photo/2017/09/01/00/15/png-2702691_640.png" }
 });
+```
+## General Graph API methods
+You can call direct graph API method If there is no mapping available. For example
+### Get
+```C#
+var pageInfo = await facebookController.Get("/[apge_id]?fields=name,about,link,cover");
 ```
 
 

@@ -12,7 +12,7 @@
       calls to Facebook. It's used for posting feeds and contents on Facebook using C# and .NET</Description>
     <PackageTags>facebook;.net;c#;graph</PackageTags>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
-    <Version>6.17.4</Version>
+    <Version>6.17.5</Version>
     <PackageProjectUrl>https://github.com/shafaqat-ali-cms365/FacebookSharp</PackageProjectUrl>
     <RepositoryUrl>https://github.com/shafaqat-ali-cms365/FacebookSharp.git</RepositoryUrl>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
@@ -24,13 +24,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="LICENSE.txt">
+    <None Include="..\LICENSE.txt">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
+    </None>
     <None Include="..\readme.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
