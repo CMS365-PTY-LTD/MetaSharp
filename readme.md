@@ -19,16 +19,21 @@ FacebookSharp currently supports the following Facebook Graph APIs:
 
 -   Getting started
     -   [Creating an app](#creating-an-app)
--   Access & Security
-    -   [Getting the access token](#authorization-and-authentication).
+-   Access and Security
+    -   [Getting the access token](#access-and-security)
 -   Using the FacebookSharp
-    -   [Using the FacebookSharp](#using-the-facebookSharp).
+    -   [Using the FacebookSharp](#using-the-facebooksharp)
+    -   [Page](#page)
+        -   [Get page details](#get-page-details)
+        -   [Post with multiline text and images](#post-with-multiline-text-and-images)
+    -   [General Graph API methods](#general-graph-api-methods)
+        -   [Get](#get)
 
 ## Creating an App
 
 Please visit https://developers.facebook.com/apps and create an app.
 
-## Authorization and authentication
+## Access and Security
 
 Please visit https://developers.facebook.com/tools/explorer/ and generate a user token.
 
