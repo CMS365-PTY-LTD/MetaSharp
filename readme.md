@@ -1,5 +1,8 @@
 # FacebookSharp: A .NET library for Facebook Graph API.
-[![NuGet](https://img.shields.io/nuget/v/CMS365.FacebookSharp.svg?maxAge=3600)](https://www.nuget.org/packages/CMS365.FacebookSharp/)
+[![NuGet version](https://img.shields.io/nuget/v/CMS365.FacebookSharp.svg?maxAge=3600)](https://www.nuget.org/packages/CMS365.FacebookSharp/)
+![GitHub last commit (main)](https://img.shields.io/github/last-commit/shafaqat-ali-cms365/FacebookSharp/main.svg?logo=github)
+[![NuGet Downloads](https://img.shields.io/nuget/dt/CMS365.FacebookSharp.svg?logo=nuget)](https://www.nuget.org/packages/CMS365.FacebookSharp/)
+[![Build status](https://img.shields.io/azure-devops/build/cms-365/FacebookSharp/6.svg?logo=azuredevops)](https://dev.azure.com/cms-365/FacebookSharp/_build?definitionId=6)
 
 FacebookSharp is a .NET library that enables you to authenticate and make graph API calls to Facebook. It's used for posting feeds and contents on Facebook using C# and .NET
 # Installation
@@ -19,16 +22,21 @@ FacebookSharp currently supports the following Facebook Graph APIs:
 
 -   Getting started
     -   [Creating an app](#creating-an-app)
--   Access & Security
-    -   [Getting the access token](#authorization-and-authentication).
+-   Access and Security
+    -   [Getting the access token](#access-and-security)
 -   Using the FacebookSharp
-    -   [Using the FacebookSharp](#using-the-facebookSharp).
+    -   [Using the FacebookSharp](#using-the-facebooksharp)
+    -   [Page](#page)
+        -   [Get page details](#get-page-details)
+        -   [Post with multiline text and images](#post-with-multiline-text-and-images)
+    -   [General Graph API methods](#general-graph-api-methods)
+        -   [Get](#get)
 
 ## Creating an App
 
 Please visit https://developers.facebook.com/apps and create an app.
 
-## Authorization and authentication
+## Access and Security
 
 Please visit https://developers.facebook.com/tools/explorer/ and generate a user token.
 
@@ -85,11 +93,16 @@ var postDetails = await facebookController.PostFeedAsync("[PAGE_ID]", new Facebo
     PhotoUrls= new List<string>() { "https://cdn.pixabay.com/photo/2017/09/01/00/15/png-2702691_640.png" }
 });
 ```
+### Post with multiline text and a link
+```C#
+var postDetails = await facebookController.PostFeedAsync("[PAGE_ID]"
+, new List<string>() { "I am a test message", "I am on next line", "I am a third line", "I am a fourth line" }, "https://google.com");
+```
 ## General Graph API methods
 You can call direct graph API method If there is no mapping available. For example
 ### Get
 ```C#
-var pageInfo = await facebookController.Get("/[apge_id]?fields=name,about,link,cover");
+var info = await facebookController.Get("/[apge_id]?fields=name,about,link,cover");
 ```
 
 

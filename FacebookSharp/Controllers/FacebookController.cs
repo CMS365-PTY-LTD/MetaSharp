@@ -38,6 +38,9 @@ namespace FacebookSharp.Controllers
                 return new JObject(new { message = ex.Message });
             }
         }
+
+        #region PAGE
+
         /// <summary>
         /// Gets page detail information
         /// </summary>
@@ -58,5 +61,11 @@ namespace FacebookSharp.Controllers
         {
             return await new PageController(accessToken).PostFeedAsync(pageId, pageFeedRequestContent);
         }
+        public async Task<JObject> PostFeedAsync(string pageId, IEnumerable<string> messageLines, string linkToNavigate)
+        {
+            return await new PageController(accessToken).PostFeedAsync(pageId, messageLines, linkToNavigate);
+        }
+
+        #endregion
     }
 }
