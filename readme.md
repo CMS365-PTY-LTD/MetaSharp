@@ -29,6 +29,8 @@ FacebookSharp currently supports the following Facebook Graph APIs:
     -   [Page](#page)
         -   [Get page details](#get-page-details)
         -   [Post with multiline text and images](#post-with-multiline-text-and-images)
+        -   [Post with multiline text and link](#post-with-multiline-text-and-a-link)
+        -   [Get page albums](#get-page-albums)
     -   [General Graph API methods](#general-graph-api-methods)
         -   [Get](#get)
 
@@ -79,24 +81,33 @@ var facebookController = new FacebookSharp.FacebookController("EAASZAbmgGb7YBAFW
 ## Page
 ### Get page details
 ```C#
-var pageDetail = await facebookController.GetPageDetailsAsync("[PAGE_ID]");
-```
-You can also pass page fields you want to get, list of fields applicable to a page is available at https://developers.facebook.com/docs/graph-api/reference/page/
-```C#
-var pageDetail = await facebookController.GetPageDetailsAsync("[PAGE_ID]","name,about,link,cover");
+PageInfo pageInfo = await facebookController.GetPageDetailsAsync("[PAGE_ID]");
 ```
 ### Post with multiline text and images
 ```C#
-var postDetails = await facebookController.PostFeedAsync("[PAGE_ID]", new FacebookSharp.Entities.PageFeedRequestContent()
+CreateFeedResponse feedWithImages = await facebookController.PostPageFeedAsync("[PAGE_ID]", new FacebookSharp.Entities.Page.PageFeedRequestContent()
 {
-    MessageLines = new List<string>() { "Loose Mineral Foundation Shade", "https://google.com","$20" },
-    PhotoUrls= new List<string>() { "https://cdn.pixabay.com/photo/2017/09/01/00/15/png-2702691_640.png" }
+    MessageLines = new List<string>() { "I am a test message", "I am on next line", "https://google.com" },
+    PhotoUrls = new List<string>() { "https://google.com/34f4ea06a374b216cb1c778a0d1810c6_480x.jpg?v=1684836648" }
 });
 ```
 ### Post with multiline text and a link
 ```C#
-var postDetails = await facebookController.PostFeedAsync("[PAGE_ID]"
-, new List<string>() { "I am a test message", "I am on next line", "I am a third line", "I am a fourth line" }, "https://google.com");
+CreateFeedResponse feedWithLink = await facebookController.PostPageFeedAsync("[PAGE_ID]",new List<string>() 
+{ 
+    "I am a test message", "I am on next line", "I am a third line", "I am a fourth line"
+},
+"https://google.com");
+```
+### Get page albums
+```C#
+var pageAlbums = await facebookController.GetPageAlbumsAsync("[PAGE_ID]", string fields = "");
+```
+### Get page albums
+Returns most recent 25 conversations.
+List of fields is available at https://developers.facebook.com/tools/explorer/1294599377547190/?method=GET&path=me%2Fconversations
+```C#
+var pageConversations = await facebookController.GetPageConversations("[PAGE_ID]", string fields = "");
 ```
 ## General Graph API methods
 You can call direct graph API method If there is no mapping available. For example
@@ -104,5 +115,3 @@ You can call direct graph API method If there is no mapping available. For examp
 ```C#
 var info = await facebookController.Get("/[apge_id]?fields=name,about,link,cover");
 ```
-
-

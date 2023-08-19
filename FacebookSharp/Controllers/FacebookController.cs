@@ -1,4 +1,4 @@
-﻿using FacebookSharp.Entities;
+﻿using FacebookSharp.Entities.Page;
 using FacebookSharp.Source;
 using Newtonsoft.Json.Linq;
 using RestSharp;
@@ -16,11 +16,7 @@ namespace FacebookSharp.Controllers
         {
             try
             {
-                var options = new RestClientOptions(Constants.GRAPH_API_URL)
-                {
-                    MaxTimeout = -1,
-                };
-                var client = new RestClient(options);
+                var client = Helpers.GetRestClient();
                 var request = new RestRequest($"{endpointUrl}&access_token={accessToken}", Method.Get);
                 var response = await client.ExecuteAsync(request);
                 if (response.IsSuccessful)
@@ -46,24 +42,51 @@ namespace FacebookSharp.Controllers
         /// </summary>
         /// <param name="pageId">Page Id</param>
         /// <param name="fields">Comma separated list of fields you want to retrieve</param>
-        /// <returns></returns>
-        public async Task<JObject> GetPageDetailsAsync(string pageId, string fields = "")
+        /// <returns>PageInfo object</returns>
+        public async Task<PageInfo> GetPageDetailsAsync(string pageId)
         {
-            return await new PageController(accessToken).GetPageDetailsAsync(pageId, fields);
+            return await new PageController(accessToken).GetPageDetailsAsync(pageId);
         }
         /// <summary>
         /// Post a feed on a page
         /// </summary>
         /// <param name="pageId">Page id</param>
         /// <param name="pageFeedRequestContent">Object containing feed data</param>
-        /// <returns></returns>
-        public async Task<JObject> PostFeedAsync(string pageId, PageFeedRequestContent pageFeedRequestContent)
+        /// <returns>CreateFeedResponse object</returns>
+        public async Task<CreateFeedResponse> PostPageFeedAsync(string pageId, PageFeedRequestContent pageFeedRequestContent)
         {
             return await new PageController(accessToken).PostFeedAsync(pageId, pageFeedRequestContent);
         }
-        public async Task<JObject> PostFeedAsync(string pageId, IEnumerable<string> messageLines, string linkToNavigate)
+        /// <summary>
+        /// Post a feed on a page
+        /// </summary>
+        /// <param name="pageId">Page id</param>
+        /// <param name="messageLines">string array of lines</param>
+        /// <param name="linkToNavigate">A link to navigate</param>
+        /// <returns>CreateFeedResponse object</returns>
+        public async Task<CreateFeedResponse> PostPageFeedAsync(string pageId, IEnumerable<string> messageLines, string linkToNavigate)
         {
             return await new PageController(accessToken).PostFeedAsync(pageId, messageLines, linkToNavigate);
+        }
+        /// <summary>
+        /// Get page albums
+        /// </summary>
+        /// <param name="pageId">Page id</param>
+        /// <returns>Albums list JSON object</returns>
+        /// <param name="fields">Comma separated list of fields you want to retrieve</param>
+        public async Task<JObject> GetPageAlbumsAsync(string pageId, string fields = "")
+        {
+            return await new PageController(accessToken).GetPageAlbumsAsync(pageId, fields);
+        }
+        /// <summary>
+        /// Get page conversations
+        /// </summary>
+        /// <param name="pageId">Page id</param>
+        /// <returns>Conversation list JSON object</returns>
+        /// <param name="fields">Comma separated list of fields you want to retrieve</param>
+        public async Task<JObject> GetPageConversations(string pageId, string fields = "")
+        {
+            return await new PageController(accessToken).GetPageConversations(pageId, fields);
         }
 
         #endregion
