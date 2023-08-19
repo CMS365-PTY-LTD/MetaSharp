@@ -2,7 +2,7 @@
 [![NuGet version](https://img.shields.io/nuget/v/CMS365.FacebookSharp.svg?maxAge=3600)](https://www.nuget.org/packages/CMS365.FacebookSharp/)
 ![GitHub last commit (main)](https://img.shields.io/github/last-commit/shafaqat-ali-cms365/FacebookSharp/main.svg?logo=github)
 [![NuGet Downloads](https://img.shields.io/nuget/dt/CMS365.FacebookSharp.svg?logo=nuget)](https://www.nuget.org/packages/CMS365.FacebookSharp/)
-[![Build status](https://img.shields.io/azure-devops/build/cms-365/FacebookSharp/6.svg?logo=azuredevops)](https://dev.azure.com/cms-365/FacebookSharp/_build?definitionId=6)
+[![Build status](https://img.shields.io/azure-devops/build/cms-365/FacebookSharp/7.svg?logo=azuredevops)](https://dev.azure.com/cms-365/FacebookSharp/_build?definitionId=7)
 
 FacebookSharp is a .NET library that enables you to authenticate and make graph API calls to Facebook. It's used for posting feeds and contents on Facebook using C# and .NET
 # Installation
