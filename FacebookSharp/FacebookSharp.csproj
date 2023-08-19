@@ -17,6 +17,7 @@
     <RepositoryUrl>https://github.com/CMS365-PTY-LTD/FacebookSharp.git</RepositoryUrl>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <PackageIcon>FacebookSharp.jpg</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -29,6 +30,10 @@
       <PackagePath>\</PackagePath>
     </None>
     <None Include="..\readme.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="F:\Dropbox\Applications\Australia\Documents\Business\CMS365\Logos\FacebookSharp.jpg">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
