@@ -3,10 +3,10 @@ using MetaSharp.Entities.Page;
 
 namespace MetaSharp.Controllers
 {
-    public class InstragramController
+    public class InstagramController
     {
         private string accessToken;
-        public InstragramController(string longLivedAccessToken)
+        public InstagramController(string longLivedAccessToken)
         {
             accessToken = longLivedAccessToken;
         }

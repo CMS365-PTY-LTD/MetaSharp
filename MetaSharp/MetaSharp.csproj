@@ -17,10 +17,15 @@
     <RepositoryUrl>https://github.com/CMS365-PTY-LTD/MetaSharp.git</RepositoryUrl>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <ApplicationIcon>MetaSharp.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="LICENSE.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="MetaSharp.ico" />
   </ItemGroup>
 
   <ItemGroup>
