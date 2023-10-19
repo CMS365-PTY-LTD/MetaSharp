@@ -12,7 +12,7 @@
       calls to Facebook and Instagram. It's used for posting feeds and contents on Facebook and Instagram using C# and .NET</Description>
     <PackageTags>facebook;.net;c#;graph;meta;instagram</PackageTags>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
-    <Version>7.18.0.2</Version>
+    <Version>7.18.0.3</Version>
     <PackageProjectUrl>https://github.com/CMS365-PTY-LTD/MetaSharp</PackageProjectUrl>
     <RepositoryUrl>https://github.com/CMS365-PTY-LTD/MetaSharp.git</RepositoryUrl>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>

@@ -1,4 +1,4 @@
-# MetaSharp: A .NET library for Facebook Graph API.
+# MetaSharp: A .NET library for Facebook and Instagram Graph API.
 [![NuGet version](https://img.shields.io/nuget/v/CMS365.MetaSharp.svg?maxAge=3600)](https://www.nuget.org/packages/CMS365.MetaSharp/)
 ![GitHub last commit (main)](https://img.shields.io/github/last-commit/CMS365-PTY-LTD/MetaSharp/main.svg?logo=github)
 [![NuGet Downloads](https://img.shields.io/nuget/dt/CMS365.MetaSharp.svg?logo=nuget)](https://www.nuget.org/packages/CMS365.MetaSharp/)
