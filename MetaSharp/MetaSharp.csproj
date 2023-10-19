@@ -8,12 +8,12 @@
     <Title>MetaSharp</Title>
     <Authors>Shafaqat Ali</Authors>
     <Company>CMS365 PTY LTD</Company>
-    <Description>FacebookSharp is a .NET library that enables you to authenticate and make graph API
-      calls to Facebook. It's used for posting feeds and contents on Facebook using C# and .NET</Description>
-    <PackageTags>facebook;.net;c#;graph;meta;instragram</PackageTags>
+    <Description>MetaSharp is a .NET library that enables you to authenticate and make graph API
+      calls to Facebook and Instagram. It's used for posting feeds and contents on Facebook and Instagram using C# and .NET</Description>
+    <PackageTags>facebook;.net;c#;graph;meta;instagram</PackageTags>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
-    <Version>7.18.0.1</Version>
-    <PackageProjectUrl>https://github.com/CMS365-PTY-LTD/FacebookSharp</PackageProjectUrl>
+    <Version>7.18.0.2</Version>
+    <PackageProjectUrl>https://github.com/CMS365-PTY-LTD/MetaSharp</PackageProjectUrl>
     <RepositoryUrl>https://github.com/CMS365-PTY-LTD/MetaSharp.git</RepositoryUrl>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
