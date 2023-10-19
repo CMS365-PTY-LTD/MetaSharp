@@ -1,20 +1,20 @@
-﻿namespace FacebookSharp.Source
+﻿namespace MetaSharp.Source
 {
     public struct Constants
     {
         public struct GraphAPI
         {
             public const string URL = "https://graph.facebook.com";
-            public const string VERSION = "v17.0";
+            public const string VERSION = "v18.0";
             public struct Page
             {
                 public struct Fields
                 {
                     public const string ME = "birthday,business,can_checkin,can_post,checkins,connected_instagram_account,connected_page_backed_instagram_account,cover,about,display_subtext,displayed_message_response_time" +
                     ",emails" +",fan_count,followers_count,global_brand_page_name,has_transitioned_to_new_page_experience,access_token,ad_campaign,affiliation,app_id,artists_we_like,attire,awards,band_interests" +
-                    ",band_members,bio" +",booking_agent,built,category,category_list,company_overview,contact_address,copyright_whitelisted_ig_partners,country_page_likes,culinary_team,current_location" +
+                    ",band_members,bio,booking_agent,built,category,category_list,company_overview,contact_address,copyright_whitelisted_ig_partners,country_page_likes,culinary_team,current_location" +
                     ",delivery_and_pickup_option_info,description,description_html,differently_open_offerings,directed_by,engagement,featured_video,features,food_styles,founded,general_info,general_manager,genre" +
-                    ",global_brand_root_id,has_added_app" +",has_whatsapp_business_number,has_whatsapp_number,hometown,hours,id,impressum,influences,instagram_business_account,is_always_open,is_chain,is_community_page,is_eligible_for_branded_content" +
+                    ",global_brand_root_id,has_added_app,has_whatsapp_business_number,has_whatsapp_number,hometown,hours,id,impressum,influences,instagram_business_account,is_always_open,is_chain,is_community_page,is_eligible_for_branded_content" +
                     ",is_messenger_bot_get_started_enabled,is_messenger_platform_bot,is_owned,is_permanently_closed,is_published,is_unclaimed,is_webhooks_subscribed,leadgen_tos_acceptance_time,leadgen_tos_accepted" +
                     ",leadgen_tos_accepting_user,link,location,members,merchant_review_status,messaging_feature_status,messenger_ads_default_icebreakers,messenger_ads_default_page_welcome_message" +
                     ",messenger_ads_default_quick_replies,messenger_ads_quick_replies_type,mission,mpg,name,name_with_location_descriptor,network,new_like_count,offer_eligible,overall_star_rating,page_token,parking" +

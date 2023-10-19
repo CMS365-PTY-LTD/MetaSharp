@@ -4,17 +4,17 @@
     <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <PackageId>CMS365.FacebookSharp</PackageId>
-    <Title>FacebookSharp</Title>
+    <PackageId>CMS365.MetaSharp</PackageId>
+    <Title>MetaSharp</Title>
     <Authors>Shafaqat Ali</Authors>
     <Company>CMS365 PTY LTD</Company>
     <Description>FacebookSharp is a .NET library that enables you to authenticate and make graph API
       calls to Facebook. It's used for posting feeds and contents on Facebook using C# and .NET</Description>
-    <PackageTags>facebook;.net;c#;graph</PackageTags>
+    <PackageTags>facebook;.net;c#;graph;meta;instragram</PackageTags>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
-    <Version>6.17.7</Version>
+    <Version>7.18.0.1</Version>
     <PackageProjectUrl>https://github.com/CMS365-PTY-LTD/FacebookSharp</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/CMS365-PTY-LTD/FacebookSharp.git</RepositoryUrl>
+    <RepositoryUrl>https://github.com/CMS365-PTY-LTD/MetaSharp.git</RepositoryUrl>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
   </PropertyGroup>

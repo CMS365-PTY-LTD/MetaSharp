@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace FacebookSharp.Entities.Page
+namespace MetaSharp.Entities.Page
 {
     public class CreateFeedResponse
     {

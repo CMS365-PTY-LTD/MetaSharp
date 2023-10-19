@@ -1,4 +1,4 @@
-﻿namespace FacebookSharp.Entities.Page
+﻿namespace MetaSharp.Entities.Page
 {
     public class PageFeedRequestContent
     {

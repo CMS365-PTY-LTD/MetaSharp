@@ -1,31 +1,31 @@
-# FacebookSharp: A .NET library for Facebook Graph API.
-[![NuGet version](https://img.shields.io/nuget/v/CMS365.FacebookSharp.svg?maxAge=3600)](https://www.nuget.org/packages/CMS365.FacebookSharp/)
-![GitHub last commit (main)](https://img.shields.io/github/last-commit/shafaqat-ali-cms365/FacebookSharp/main.svg?logo=github)
-[![NuGet Downloads](https://img.shields.io/nuget/dt/CMS365.FacebookSharp.svg?logo=nuget)](https://www.nuget.org/packages/CMS365.FacebookSharp/)
-[![Build status](https://img.shields.io/azure-devops/build/cms-365/FacebookSharp/7.svg?logo=azuredevops)](https://dev.azure.com/cms-365/FacebookSharp/_build?definitionId=7)
+# MetaSharp: A .NET library for Facebook Graph API.
+[![NuGet version](https://img.shields.io/nuget/v/CMS365.MetaSharp.svg?maxAge=3600)](https://www.nuget.org/packages/CMS365.MetaSharp/)
+![GitHub last commit (main)](https://img.shields.io/github/last-commit/shafaqat-ali-cms365/MetaSharp/main.svg?logo=github)
+[![NuGet Downloads](https://img.shields.io/nuget/dt/CMS365.MetaSharp.svg?logo=nuget)](https://www.nuget.org/packages/CMS365.MetaSharp/)
+[![Build status](https://img.shields.io/azure-devops/build/cms-365/MetaSharp/7.svg?logo=azuredevops)](https://dev.azure.com/cms-365/MetaSharp/_build?definitionId=7)
 
-FacebookSharp is a .NET library that enables you to authenticate and make graph API calls to Facebook. It's used for posting feeds and contents on Facebook using C# and .NET
+MetaSharp is a .NET library that enables you to authenticate and make graph API calls to Facebook. It's used for posting feeds and contents on Facebook using C# and .NET
 # Installation
-FacebookSharp is [available on NuGet](https://www.nuget.org/packages/CMS365.FacebookSharp/). Use the package manager
+MetaSharp is [available on NuGet](https://www.nuget.org/packages/CMS365.MetaSharp/). Use the package manager
 console in Visual Studio to install it:
 
 ```pwsh
-Install-Package CMS365.FacebookSharp
+Install-Package CMS365.MetaSharp
 ```
 # API support
 
-| FacebookSharp version | Facebook Graph API version | Build versions
-| -------------------- | ------------------- |----------------------- |
-| 6                    | 17                  | x                      |
+| MetaSharp version    | Facebook Graph API version | Build versions
+| -------------------- | -------------------------- |----------------------- |
+| 6                    | 17                         | x                      |
 
-FacebookSharp currently supports the following Facebook Graph APIs:
+MetaSharp currently supports the following Facebook Graph APIs:
 
 -   Getting started
     -   [Creating an app](#creating-an-app)
 -   Access and Security
     -   [Getting the access token](#access-and-security)
--   Using the FacebookSharp
-    -   [Using the FacebookSharp](#using-the-facebooksharp)
+-   Using the MetaSharp
+    -   [Using the MetaSharp](#using-the-MetaSharp)
     -   [Page](#page)
         -   [Get page details](#get-page-details)
         -   [Post with multiline text and images](#post-with-multiline-text-and-images)
@@ -72,10 +72,10 @@ https://graph.facebook.com/FACEBOOK_PAGE_ID?fields=access_token&access_token=LON
 ```
 We have now got a page token which we will use to perform actions on a Facebook page.
 
-## Using the FacebookSharp
+## Using the MetaSharp
  Initialize the instance with the page token
 ```C#
-var facebookController = new FacebookSharp.FacebookController("EAASZAbmgGb7YBAFWM3uNUKan1ZBTf4rIAQiLzPSNMa7Lm3Ak1R8tNAVwsORl0LZAcPNEURzFgl6");
+var facebookController = new MetaSharp.FacebookController("EAASZAbmgGb7YBAFWM3uNUKan1ZBTf4rIAQiLzPSNMa7Lm3Ak1R8tNAVwsORl0LZAcPNEURzFgl6");
 ```
 
 ## Page
@@ -85,7 +85,7 @@ PageInfo pageInfo = await facebookController.GetPageDetailsAsync("[PAGE_ID]");
 ```
 ### Post with multiline text and images
 ```C#
-CreateFeedResponse feedWithImages = await facebookController.PostPageFeedAsync("[PAGE_ID]", new FacebookSharp.Entities.Page.PageFeedRequestContent()
+CreateFeedResponse feedWithImages = await facebookController.PostPageFeedAsync("[PAGE_ID]", new MetaSharp.Entities.Page.PageFeedRequestContent()
 {
     MessageLines = new List<string>() { "I am a test message", "I am on next line", "https://google.com" },
     PhotoUrls = new List<string>() { "https://google.com/34f4ea06a374b216cb1c778a0d1810c6_480x.jpg?v=1684836648" }

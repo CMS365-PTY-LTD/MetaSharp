@@ -1,6 +1,6 @@
 ﻿using RestSharp;
 
-namespace FacebookSharp.Source
+namespace MetaSharp.Source
 {
     public static class Helpers
     {

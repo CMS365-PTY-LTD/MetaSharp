@@ -1,11 +1,11 @@
 ﻿using Newtonsoft.Json;
 
-namespace FacebookSharp.Entities.Page
+namespace MetaSharp.Entities.Page
 {
     public class PageInfo
     {
         [JsonProperty("birthday")]
-        public string Birthday { get; set; }
+        public string? Birthday { get; set; }
 
         [JsonProperty("business")]
         public Business Business { get; set; }

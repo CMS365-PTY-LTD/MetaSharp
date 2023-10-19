@@ -1,12 +1,10 @@
-﻿using FacebookSharp.Entities.Page;
-using FacebookSharp.Source;
+﻿using MetaSharp.Entities.Page;
+using MetaSharp.Source;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RestSharp;
-using System.Security.Principal;
-using System.Text.Json.Nodes;
 
-namespace FacebookSharp.Controllers
+namespace MetaSharp.Controllers
 {
     class PageController
     {

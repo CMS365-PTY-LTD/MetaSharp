@@ -1,9 +1,9 @@
-﻿using FacebookSharp.Entities.Page;
-using FacebookSharp.Source;
+﻿using MetaSharp.Entities.Page;
+using MetaSharp.Source;
 using Newtonsoft.Json.Linq;
 using RestSharp;
 
-namespace FacebookSharp.Controllers
+namespace MetaSharp.Controllers
 {
     public class FacebookController
     {
@@ -45,7 +45,7 @@ namespace FacebookSharp.Controllers
         /// <returns>PageInfo object</returns>
         public async Task<PageInfo> GetPageDetailsAsync(string pageId)
         {
-            return await new PageController(accessToken).GetPageDetailsAsync(pageId);
+            return await new FacebookPageController(accessToken).GetPageDetailsAsync(pageId);
         }
         /// <summary>
         /// Post a feed on a page
@@ -55,7 +55,7 @@ namespace FacebookSharp.Controllers
         /// <returns>CreateFeedResponse object</returns>
         public async Task<CreateFeedResponse> PostPageFeedAsync(string pageId, PageFeedRequestContent pageFeedRequestContent)
         {
-            return await new PageController(accessToken).PostFeedAsync(pageId, pageFeedRequestContent);
+            return await new FacebookPageController(accessToken).PostFeedAsync(pageId, pageFeedRequestContent);
         }
         /// <summary>
         /// Post a feed on a page
@@ -66,7 +66,7 @@ namespace FacebookSharp.Controllers
         /// <returns>CreateFeedResponse object</returns>
         public async Task<CreateFeedResponse> PostPageFeedAsync(string pageId, IEnumerable<string> messageLines, string linkToNavigate)
         {
-            return await new PageController(accessToken).PostFeedAsync(pageId, messageLines, linkToNavigate);
+            return await new FacebookPageController(accessToken).PostFeedAsync(pageId, messageLines, linkToNavigate);
         }
         /// <summary>
         /// Get page albums
@@ -76,7 +76,7 @@ namespace FacebookSharp.Controllers
         /// <param name="fields">Comma separated list of fields you want to retrieve</param>
         public async Task<JObject> GetPageAlbumsAsync(string pageId, string fields = "")
         {
-            return await new PageController(accessToken).GetPageAlbumsAsync(pageId, fields);
+            return await new FacebookPageController(accessToken).GetPageAlbumsAsync(pageId, fields);
         }
         /// <summary>
         /// Get page conversations
@@ -86,7 +86,7 @@ namespace FacebookSharp.Controllers
         /// <param name="fields">Comma separated list of fields you want to retrieve</param>
         public async Task<JObject> GetPageConversations(string pageId, string fields = "")
         {
-            return await new PageController(accessToken).GetPageConversations(pageId, fields);
+            return await new FacebookPageController(accessToken).GetPageConversations(pageId, fields);
         }
 
         #endregion
