@@ -3,7 +3,7 @@
 ![GitHub last commit (main)](https://img.shields.io/github/last-commit/CMS365-PTY-LTD/MetaSharp/main.svg?logo=github)
 [![NuGet Downloads](https://img.shields.io/nuget/dt/CMS365.MetaSharp.svg?logo=nuget)](https://www.nuget.org/packages/CMS365.MetaSharp/)
 [![Build status](https://img.shields.io/azure-devops/build/cms-365/MetaSharp/8.svg?logo=azuredevops)](https://cms-365.visualstudio.com/MetaSharp/_build?definitionId=8)
-[![license](https://img.shields.io/github/license/CMS365/MetaSharp.svg?maxAge=3600)](https://github.com/CMS365-PTY-LTD/MetaSharp/blob/master/LICENSE)
+[![license](https://img.shields.io/github/license/CMS365/MetaSharp.svg?maxAge=3600)](https://github.com/CMS365-PTY-LTD/MetaSharp/blob/master/LICENSE.txt)
 
 MetaSharp is a .NET library that enables you to authenticate and make graph API calls to Facebook. It's used for posting feeds and contents on Facebook using C# and .NET
 # Installation
