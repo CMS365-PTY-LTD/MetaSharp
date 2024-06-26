@@ -8,7 +8,7 @@ namespace MetaSharp.Source
         {
             var options = new RestClientOptions($"{Constants.GraphAPI.URL}/{Constants.GraphAPI.VERSION}")
             {
-                MaxTimeout = -1,
+                Timeout = TimeSpan.FromMilliseconds(-1),
             };
             return new RestClient(options);
         }
