@@ -1,7 +1,6 @@
 ﻿using MetaSharp.Entities.Page;
 using MetaSharp.Source;
 using Newtonsoft.Json.Linq;
-using RestSharp;
 
 namespace MetaSharp.Controllers
 {
@@ -16,18 +15,14 @@ namespace MetaSharp.Controllers
         {
             try
             {
-                var client = Helpers.GetRestClient();
-                var request = new RestRequest($"{endpointUrl}&access_token={accessToken}", Method.Get);
-                var response = await client.ExecuteAsync(request);
-                if (response.IsSuccessful)
+                string url = $"{endpointUrl}&access_token={accessToken}";
+                var response = await Helpers.ExecuteGetRequest<string>(url);
+                
+                if (string.IsNullOrEmpty(response))
                 {
-                    if (string.IsNullOrEmpty(response.Content))
-                    {
-                        throw new Exception("No content found.");
-                    }
-                    return JObject.Parse(response.Content);
+                    throw new Exception("No content found.");
                 }
-                throw new Exception($"Error, {response.Content}");
+                return JObject.Parse(response);
             }
             catch (Exception ex)
             {

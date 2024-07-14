@@ -2,7 +2,6 @@
 using MetaSharp.Source;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using RestSharp;
 
 namespace MetaSharp.Controllers
 {
@@ -23,21 +22,15 @@ namespace MetaSharp.Controllers
         {
             try
             {
-                var client = Helpers.GetRestClient();
                 string endPointUrl = $"/{pageId}/media?access_token={accessToken}&image_url={photoUrl}&is_carousel_item=true";
-                var request = new RestRequest(endPointUrl, Method.Post);
-                var response = await client.ExecuteAsync(request);
-                if (response.IsSuccessful)
+                var response = await Helpers.ExecutePostRequest<string>(endPointUrl);
+                if (string.IsNullOrEmpty(response))
                 {
-                    if (string.IsNullOrEmpty(response.Content))
-                    {
-                        throw new Exception("No content found.");
-                    }
-                    var id = JObject.Parse(response.Content)["id"];
-
-                    return id == null ? "" : id.ToString();
+                    throw new Exception("No content found.");
                 }
-                throw new Exception($"Error, {response.Content}");
+                var id = JObject.Parse(response)["id"];
+
+                return id == null ? "" : id.ToString();
             }
             catch (Exception ex)
             {
@@ -48,21 +41,15 @@ namespace MetaSharp.Controllers
         {
             try
             {
-                var client = Helpers.GetRestClient();
                 string endPointUrl = $"/{pageId}/media?access_token={accessToken}&caption={caption}&children={string.Join(',', tempPictureUploadIds)}&media_type=CAROUSEL";
-                var request = new RestRequest(endPointUrl, Method.Post);
-                var response = await client.ExecuteAsync(request);
-                if (response.IsSuccessful)
+                var response = await Helpers.ExecutePostRequest<string>(endPointUrl);
+                if (string.IsNullOrEmpty(response))
                 {
-                    if (string.IsNullOrEmpty(response.Content))
-                    {
-                        throw new Exception("No content found.");
-                    }
-                    var id = JObject.Parse(response.Content)["id"];
-
-                    return id == null ? "" : id.ToString();
+                    throw new Exception("No content found.");
                 }
-                throw new Exception($"Error, {response.Content}");
+                var id = JObject.Parse(response)["id"];
+
+                return id == null ? "" : id.ToString();
             }
             catch (Exception ex)
             {
@@ -90,18 +77,14 @@ namespace MetaSharp.Controllers
                 }
                 string messagesQuery = pageFeedRequestContent.MessageLines != null && pageFeedRequestContent.MessageLines.Any() ? $"{formatMessageString(pageFeedRequestContent.MessageLines)}" : "";
                 string containerId = await UploadImageContainerTempAsync(pageId, messagesQuery, tempPictureUploadIds.ToArray());
-                var client = Helpers.GetRestClient();
-                var request = new RestRequest($"/{pageId}/media_publish?access_token={accessToken}&creation_id={containerId}", Method.Post);
-                var response = await client.ExecuteAsync(request);
-                if (response.IsSuccessful)
+
+                string endPointUrl = $"/{pageId}/media_publish?access_token={accessToken}&creation_id={containerId}";
+                var response = await Helpers.ExecutePostRequest<string>(endPointUrl);
+                if (string.IsNullOrEmpty(response))
                 {
-                    if (string.IsNullOrEmpty(response.Content))
-                    {
-                        throw new Exception("No content found.");
-                    }
-                    return JsonConvert.DeserializeObject<CreateFeedResponse>(response.Content);
+                    throw new Exception("No content found.");
                 }
-                throw new Exception($"Error, {response.Content}");
+                return JsonConvert.DeserializeObject<CreateFeedResponse>(response);
             }
             catch (Exception ex)
             {

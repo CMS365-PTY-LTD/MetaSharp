@@ -2,7 +2,6 @@
 using MetaSharp.Source;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using RestSharp;
 
 namespace MetaSharp.Controllers
 {
@@ -33,20 +32,14 @@ namespace MetaSharp.Controllers
         {
             try
             {
-                var client = Helpers.GetRestClient();
-                var request = new RestRequest($"/me/photos?access_token={accessToken}&url={photoUrl}&published=false", Method.Post);
-                var response = await client.ExecuteAsync(request);
-                if (response.IsSuccessful)
+                string url = $"/me/photos?access_token={accessToken}&url={photoUrl}&published=false";
+                var response = await Helpers.ExecutePostRequest<string>(url);
+                if (string.IsNullOrEmpty(response))
                 {
-                    if (string.IsNullOrEmpty(response.Content))
-                    {
-                        throw new Exception("No content found.");
-                    }
-                    var id = JObject.Parse(response.Content)["id"];
-
-                    return id == null ? "" : id.ToString();
+                    throw new Exception("No content found.");
                 }
-                throw new Exception($"Error, {response.Content}");
+                var id = JObject.Parse(response)["id"];
+                return id == null ? "" : id.ToString();
             }
             catch (Exception ex)
             {
@@ -57,19 +50,14 @@ namespace MetaSharp.Controllers
         #endregion
         public async Task<PageInfo> GetPageDetailsAsync(string pageId)
         {
-            var client = Helpers.GetRestClient();
-            string requestUrl = $"/{pageId}?access_token={accessToken}&fields={Constants.GraphAPI.Page.Fields.ME}";
-            var request = new RestRequest(requestUrl, Method.Get);
-            var response = await client.ExecuteAsync(request);
-            if (response.IsSuccessful)
+            string url = $"/{pageId}?access_token={accessToken}&fields={Constants.GraphAPI.Page.Fields.ME}";
+            var response = await Helpers.ExecuteGetRequest<string>(url);
+            if (string.IsNullOrEmpty(response))
             {
-                if (string.IsNullOrEmpty(response.Content))
-                {
-                    throw new Exception("No content found.");
-                }
-                return JsonConvert.DeserializeObject<PageInfo>(response.Content);
+                throw new Exception("No content found.");
             }
-            throw new Exception($"Error, {response.Content}");
+            return JsonConvert.DeserializeObject<PageInfo>(response);
+
         }
         public async Task<CreateFeedResponse> PostFeedAsync(string pageId, PageFeedRequestContent pageFeedRequestContent)
         {
@@ -88,20 +76,18 @@ namespace MetaSharp.Controllers
                         tempPictureUploadIds.Add(await UploadImageTempAsync(photoUrl));
                     }
                 }
-                var client = Helpers.GetRestClient();
                 string messagesQuery = pageFeedRequestContent.MessageLines != null && pageFeedRequestContent.MessageLines.Any() ? $"&{formatMessageString(pageFeedRequestContent.MessageLines)}" : "";
                 string imagesQuery = tempPictureUploadIds.Any() ? "&" + formatImageLinks(tempPictureUploadIds.ToArray()) : "";
-                var request = new RestRequest($"/{pageId}/feed?access_token={accessToken}{messagesQuery}{imagesQuery}", Method.Post);
-                var response = await client.ExecuteAsync(request);
-                if (response.IsSuccessful)
+
+
+                string url = $"/{pageId}/feed?access_token={accessToken}{messagesQuery}{imagesQuery}";
+                var response = await Helpers.ExecutePostRequest<string>(url);
+
+                if (string.IsNullOrEmpty(response))
                 {
-                    if (string.IsNullOrEmpty(response.Content))
-                    {
-                        throw new Exception("No content found.");
-                    }
-                    return JsonConvert.DeserializeObject<CreateFeedResponse>(response.Content);
+                    throw new Exception("No content found.");
                 }
-                throw new Exception($"Error, {response.Content}");
+                return JsonConvert.DeserializeObject<CreateFeedResponse>(response);
             }
             catch (Exception ex)
             {
@@ -116,21 +102,17 @@ namespace MetaSharp.Controllers
                 {
                     throw new Exception("You must pass some content to post.");
                 }
-                var client = Helpers.GetRestClient();
+                
                 string messagesQuery = messageLines != null && messageLines.Any() ? $"&{formatMessageString(messageLines)}" : "";
                 string linkQuery = string.IsNullOrEmpty(linkToNavigate) == false ? $"&link={linkToNavigate}" : "";
                 string requestUrl = $"/{pageId}/feed?access_token={accessToken}{messagesQuery}{linkQuery}";
-                var request = new RestRequest(requestUrl, Method.Post);
-                var response = await client.ExecuteAsync(request);
-                if (response.IsSuccessful)
+
+                var response = await Helpers.ExecutePostRequest<string>(requestUrl);
+                if (string.IsNullOrEmpty(response))
                 {
-                    if (string.IsNullOrEmpty(response.Content))
-                    {
-                        throw new Exception("No content found.");
-                    }
-                    return JsonConvert.DeserializeObject<CreateFeedResponse>(response.Content);
+                    throw new Exception("No content found.");
                 }
-                throw new Exception($"Error, {response.Content}");
+                return JsonConvert.DeserializeObject<CreateFeedResponse>(response);
             }
             catch (Exception ex)
             {
@@ -141,19 +123,13 @@ namespace MetaSharp.Controllers
         {
             try
             {
-                var client = Helpers.GetRestClient();
                 string requestUrl = $"/{pageId}/albums?access_token={accessToken}{formatFieldsString(fields)}";
-                var request = new RestRequest(requestUrl, Method.Get);
-                var response = await client.ExecuteAsync(request);
-                if (response.IsSuccessful)
+                var response = await Helpers.ExecuteGetRequest<string>(requestUrl);
+                if (string.IsNullOrEmpty(response))
                 {
-                    if (string.IsNullOrEmpty(response.Content))
-                    {
-                        throw new Exception("No content found.");
-                    }
-                    return JObject.Parse(response.Content);
+                    throw new Exception("No content found.");
                 }
-                throw new Exception($"Error, {response.Content}");
+                return JObject.Parse(response);
             }
             catch (Exception ex)
             {
@@ -164,19 +140,13 @@ namespace MetaSharp.Controllers
         {
             try
             {
-                var client = Helpers.GetRestClient();
                 string requestUrl = $"/{pageId}/conversations?access_token={accessToken}{formatFieldsString(fields)}";
-                var request = new RestRequest(requestUrl, Method.Get);
-                var response = await client.ExecuteAsync(request);
-                if (response.IsSuccessful)
+                var response = await Helpers.ExecuteGetRequest<string>(requestUrl);
+                if (string.IsNullOrEmpty(response))
                 {
-                    if (string.IsNullOrEmpty(response.Content))
-                    {
-                        throw new Exception("No content found.");
-                    }
-                    return JObject.Parse(response.Content);
+                    throw new Exception("No content found.");
                 }
-                throw new Exception($"Error, {response.Content}");
+                return JObject.Parse(response);
             }
             catch (Exception ex)
             {

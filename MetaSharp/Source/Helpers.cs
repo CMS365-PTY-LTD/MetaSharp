@@ -1,16 +1,64 @@
-﻿using RestSharp;
-
-namespace MetaSharp.Source
+﻿namespace MetaSharp.Source
 {
     public static class Helpers
     {
-        public static RestClient GetRestClient()
+        public static async Task<T> ExecutePostRequest<T>(string endpointUrl)
         {
-            var options = new RestClientOptions($"{Constants.GraphAPI.URL}/{Constants.GraphAPI.VERSION}")
+            return await executePostRequest<T>(endpointUrl, null, null, null, null);
+        }
+        private static async Task<T> executePostRequest<T>(string endpointUrl, string authHeaderValue, List<KeyValuePair<string, string>>? keyValuePayload, string? JSONPayload, string? contentLanguage)
+        {
+            HttpResponseMessage response = await executeRequest(HttpMethod.Post, endpointUrl, authHeaderValue, contentLanguage, keyValuePayload, JSONPayload);
+            string responseContent = await response.Content.ReadAsStringAsync();
+            if (response.IsSuccessStatusCode)
             {
-                Timeout = TimeSpan.FromMilliseconds(-1),
-            };
-            return new RestClient(options);
+                if (typeof(T) == typeof(string))
+                {
+                    return (T)Convert.ChangeType(responseContent, typeof(T));
+                }
+                return responseContent.DeserializeToObject<T>();
+            }
+            throw new Exception((new { error = responseContent.DeserializeToObject<object>(), payload = JSONPayload?.DeserializeToObject<object>() }).SerializeToJson());
+        }
+        public static async Task<T> ExecuteGetRequest<T>(string endpointUrl)
+        {
+            HttpResponseMessage response = await executeRequest(HttpMethod.Get, endpointUrl, null, null, null, null);
+            string responseContent = await response.Content.ReadAsStringAsync();
+            if (response.IsSuccessStatusCode)
+            {
+                if (typeof(T) == typeof(string))
+                {
+                    return (T)Convert.ChangeType(responseContent, typeof(T));
+                }
+                return responseContent.DeserializeToObject<T>();
+            }
+            throw new Exception((new { error = responseContent.DeserializeToObject<object>() }).SerializeToJson());
+        }
+        private static async Task<HttpResponseMessage> executeRequest(HttpMethod httpMethod, string endpointUrl, string authHeaderValue, string? contentLanguageHeaderValue,
+            List<KeyValuePair<string, string>>? keyValuePayload, string? JSONPayload)
+        {
+            var client = new HttpClient();
+            var request = new HttpRequestMessage(httpMethod, $"{Constants.GraphAPI.URL}/{Constants.GraphAPI.VERSION}/{endpointUrl}");
+            if (authHeaderValue != null)
+            {
+                request.Headers.Add("Authorization", authHeaderValue);
+            }
+            if (keyValuePayload != null)
+            {
+                var content = new FormUrlEncodedContent(keyValuePayload);
+                request.Content = content;
+            }
+            else if (JSONPayload != null)
+            {
+                var content = new StringContent(JSONPayload, null, "application/json");
+                if (string.IsNullOrEmpty(contentLanguageHeaderValue) == false)
+                {
+                    content.Headers.Add("Content-Language", contentLanguageHeaderValue.Replace("_", "-"));
+                }
+                request.Content = content;
+            }
+            var response = await client.SendAsync(request);
+            return response;
         }
     }
 }
