@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+    <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageId>CMS365.MetaSharp</PackageId>
@@ -12,7 +12,7 @@
       calls to Facebook and Instagram. It's used for posting feeds and contents on Facebook and Instagram using C# and .NET</Description>
     <PackageTags>facebook;.net;c#;graph;meta;instagram</PackageTags>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
-    <Version>7.18.0.4</Version>
+    <Version>6.0.0.2</Version>
     <PackageProjectUrl>https://github.com/CMS365-PTY-LTD/MetaSharp</PackageProjectUrl>
     <RepositoryUrl>https://github.com/CMS365-PTY-LTD/MetaSharp.git</RepositoryUrl>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
