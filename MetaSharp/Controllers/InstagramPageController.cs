@@ -67,7 +67,7 @@ namespace MetaSharp.Controllers
                 {
                     throw new Exception("You must pass some content to post.");
                 }
-                List<string> tempPictureUploadIds = new List<string>();
+                List<string> tempPictureUploadIds = [];
                 if (pageFeedRequestContent.PhotoUrls != null && pageFeedRequestContent.PhotoUrls.Any())
                 {
                     foreach (var photoUrl in pageFeedRequestContent.PhotoUrls)
