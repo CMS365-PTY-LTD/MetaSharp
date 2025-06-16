@@ -175,7 +175,7 @@ namespace MetaSharp.Entities.Page
         [JsonPropertyName("were_here_count")]
         public int WereHereCount { get; set; }
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
-        
+
 
     }
     public class Business
