@@ -1,6 +1,6 @@
 ﻿using MetaSharp.Entities.Page;
 using MetaSharp.Source;
-using Newtonsoft.Json.Linq;
+using System.Text.Json.Nodes;
 
 namespace MetaSharp.Controllers
 {
@@ -11,7 +11,7 @@ namespace MetaSharp.Controllers
         {
             accessToken = longLivedAccessToken;
         }
-        public async Task<JObject> Get(string endpointUrl)
+        public async Task<JsonObject> Get(string endpointUrl)
         {
             try
             {
@@ -22,11 +22,11 @@ namespace MetaSharp.Controllers
                 {
                     throw new Exception("No content found.");
                 }
-                return JObject.Parse(response);
+                return JsonNode.Parse(response).AsObject();
             }
             catch (Exception ex)
             {
-                return new JObject(new { message = ex.Message });
+                return new JsonObject { ["message"]= ex.Message };
             }
         }
 
@@ -69,7 +69,7 @@ namespace MetaSharp.Controllers
         /// <param name="pageId">Page id</param>
         /// <returns>Albums list JSON object</returns>
         /// <param name="fields">Comma separated list of fields you want to retrieve</param>
-        public async Task<JObject> GetPageAlbumsAsync(string pageId, string fields = "")
+        public async Task<JsonObject> GetPageAlbumsAsync(string pageId, string fields = "")
         {
             return await new FacebookPageController(accessToken).GetPageAlbumsAsync(pageId, fields);
         }
@@ -79,7 +79,7 @@ namespace MetaSharp.Controllers
         /// <param name="pageId">Page id</param>
         /// <returns>Conversation list JSON object</returns>
         /// <param name="fields">Comma separated list of fields you want to retrieve</param>
-        public async Task<JObject> GetPageConversations(string pageId, string fields = "")
+        public async Task<JsonObject> GetPageConversations(string pageId, string fields = "")
         {
             return await new FacebookPageController(accessToken).GetPageConversations(pageId, fields);
         }

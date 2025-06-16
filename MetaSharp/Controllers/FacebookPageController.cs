@@ -1,7 +1,7 @@
 ﻿using MetaSharp.Entities.Page;
 using MetaSharp.Source;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 
 namespace MetaSharp.Controllers
 {
@@ -38,7 +38,7 @@ namespace MetaSharp.Controllers
                 {
                     throw new Exception("No content found.");
                 }
-                var id = JObject.Parse(response)["id"];
+                var id = JsonObject.Parse(response)["id"];
                 return id == null ? "" : id.ToString();
             }
             catch (Exception ex)
@@ -56,7 +56,7 @@ namespace MetaSharp.Controllers
             {
                 throw new Exception("No content found.");
             }
-            return JsonConvert.DeserializeObject<PageInfo>(response);
+            return JsonSerializer.Deserialize<PageInfo>(response);
 
         }
         public async Task<CreateFeedResponse> PostFeedAsync(string pageId, PageFeedRequestContent pageFeedRequestContent)
@@ -87,7 +87,7 @@ namespace MetaSharp.Controllers
                 {
                     throw new Exception("No content found.");
                 }
-                return JsonConvert.DeserializeObject<CreateFeedResponse>(response);
+                return JsonSerializer.Deserialize<CreateFeedResponse>(response);
             }
             catch (Exception ex)
             {
@@ -112,14 +112,14 @@ namespace MetaSharp.Controllers
                 {
                     throw new Exception("No content found.");
                 }
-                return JsonConvert.DeserializeObject<CreateFeedResponse>(response);
+                return JsonSerializer.Deserialize<CreateFeedResponse>(response);
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
         }
-        public async Task<JObject> GetPageAlbumsAsync(string pageId, string fields)
+        public async Task<JsonObject> GetPageAlbumsAsync(string pageId, string fields)
         {
             try
             {
@@ -129,14 +129,14 @@ namespace MetaSharp.Controllers
                 {
                     throw new Exception("No content found.");
                 }
-                return JObject.Parse(response);
+                return JsonObject.Parse(response).AsObject();
             }
             catch (Exception ex)
             {
-                return new JObject(new { message = ex.Message });
+                return new JsonObject { ["message"] = ex.Message };
             }
         }
-        public async Task<JObject> GetPageConversations(string pageId, string fields)
+        public async Task<JsonObject> GetPageConversations(string pageId, string fields)
         {
             try
             {
@@ -146,11 +146,11 @@ namespace MetaSharp.Controllers
                 {
                     throw new Exception("No content found.");
                 }
-                return JObject.Parse(response);
+                return JsonObject.Parse(response).AsObject();
             }
             catch (Exception ex)
             {
-                return new JObject(new { message = ex.Message });
+                return new JsonObject { ["message"] = ex.Message };
             }
         }
     }

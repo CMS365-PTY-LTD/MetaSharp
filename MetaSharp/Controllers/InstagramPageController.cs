@@ -1,7 +1,7 @@
 ﻿using MetaSharp.Entities.Page;
 using MetaSharp.Source;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 
 namespace MetaSharp.Controllers
 {
@@ -28,7 +28,7 @@ namespace MetaSharp.Controllers
                 {
                     throw new Exception("No content found.");
                 }
-                var id = JObject.Parse(response)["id"];
+                var id = JsonObject.Parse(response)["id"];
 
                 return id == null ? "" : id.ToString();
             }
@@ -47,7 +47,7 @@ namespace MetaSharp.Controllers
                 {
                     throw new Exception("No content found.");
                 }
-                var id = JObject.Parse(response)["id"];
+                var id = JsonObject.Parse(response)["id"];
 
                 return id == null ? "" : id.ToString();
             }
@@ -84,7 +84,7 @@ namespace MetaSharp.Controllers
                 {
                     throw new Exception("No content found.");
                 }
-                return JsonConvert.DeserializeObject<CreateFeedResponse>(response);
+                return JsonSerializer.Deserialize<CreateFeedResponse>(response);
             }
             catch (Exception ex)
             {
