@@ -31,6 +31,8 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --verbosity normal --logger "trx;LogFileName=test-results.trx" --results-directory "TestResults"
+    - name: List TestResults
+      run: dir TestResults
     - name: Test Report
       uses: dorny/test-reporter@v1
       if: success() || failure() # run this step even if previous step failed
@@ -40,4 +42,4 @@ jobs:
         list-tests: "all"
         fail-on-error: "true"
         #artifact: test-results
-        path: TestResults\test-results.trx
+        path: TestResults/test-results.trx
