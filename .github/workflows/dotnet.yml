@@ -16,6 +16,8 @@ jobs:
       # SLN_FILE: "/home/runner/work/MetaSharp/MetaSharp.sln"
 
     runs-on: windows-latest
+    permissions:
+      checks: write
 
     steps:
     - uses: actions/checkout@v4
