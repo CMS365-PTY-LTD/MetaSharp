@@ -24,7 +24,7 @@ jobs:
       with:
         dotnet-version: 9.0.x
     - name: Verify solution Path
-      run: ls -la $SLN_FILE
+      run: dir /a $SLN_FILE
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
