@@ -1,7 +1,7 @@
 # This workflow will build a .NET project
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
-name: Built & Test
+name: Built & Test PROD
 
 on:
   workflow_dispatch:
@@ -12,8 +12,8 @@ on:
 
 jobs:
   build_and_test:
-    env:
-      SLN_FILE: "/home/runner/work/MetaSharp/MetaSharp.sln"
+   # env:
+      # SLN_FILE: "/home/runner/work/MetaSharp/MetaSharp.sln"
 
     runs-on: windows-latest
 
@@ -23,11 +23,21 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 9.0.x
-    - name: Verify solution Path
-      run: dir /a $SLN_FILE
+    # - name: Verify solution Path
+    #   run: dir /a $SLN_FILE
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --verbosity normal --logger "trx;LogFileName=test-results.trx" --results-directory "TestResults"
+    - name: Test Report
+      uses: dorny/test-reporter@v1
+      if: success() || failure() # run this step even if previous step failed
+      with:
+        name: MetaSharp Tests # Name of the check run which will be created
+        reporter: dotnet-trx # Format of test results
+        list-tests: "all"
+        fail-on-error: "true"
+        #artifact: test-results
+        path: ${{ github.workspace }}/TestResults/test-results.trx # Path to test results (inside artifact .zip)
