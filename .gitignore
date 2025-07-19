@@ -3,11 +3,8 @@
 ################################################################################
 
 /.vs
-/FacebookSharp/obj
-/FacebookSharp/bin/Debug/net6.0
-/FacebookSharp/bin/Release
-/FacebookSharp/bin/Debug/net7.0
-/FacebookSharp/bin/Debug
-/MetaSharp/bin/Debug
+
+/MetaSharp/bin
 /MetaSharp/obj
-/MetaSharp/bin/Release
+/MetaSharp.Tests/bin
+/MetaSharp.Tests/obj

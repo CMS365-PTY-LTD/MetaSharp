@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetaSharp", "MetaSharp\MetaSharp.csproj", "{53BB8D8D-CE0D-4594-BC32-C91B23C84458}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetaSharp.Tests", "MetaSharp.Tests\MetaSharp.Tests.csproj", "{7BEB09D3-6A2D-4C58-BF95-2C202FAAE590}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{53BB8D8D-CE0D-4594-BC32-C91B23C84458}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53BB8D8D-CE0D-4594-BC32-C91B23C84458}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53BB8D8D-CE0D-4594-BC32-C91B23C84458}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BEB09D3-6A2D-4C58-BF95-2C202FAAE590}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BEB09D3-6A2D-4C58-BF95-2C202FAAE590}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BEB09D3-6A2D-4C58-BF95-2C202FAAE590}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BEB09D3-6A2D-4C58-BF95-2C202FAAE590}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

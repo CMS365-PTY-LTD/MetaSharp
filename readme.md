@@ -17,7 +17,7 @@ Install-Package CMS365.MetaSharp
 
 | MetaSharp version    | Facebook Graph API version |
 | -------------------- | ---------------------------|
-| 8.x                  | 18.x                       |
+| 9.x                  | 18.x                       |
 
 MetaSharp currently supports the following Facebook Graph APIs:
 
