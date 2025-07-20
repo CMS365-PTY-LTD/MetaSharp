@@ -17,6 +17,8 @@ jobs:
 
     runs-on: windows-latest
     environment: PROD
+    env:
+      PAGEID: ${{ vars.PAGEID }}
     permissions:
       checks: write
 
