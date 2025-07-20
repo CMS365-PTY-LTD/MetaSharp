@@ -41,7 +41,7 @@ jobs:
       uses: dorny/test-reporter@v1
       if: success() || failure() # run this step even if previous step failed
       with:
-        name: MetaSharp Tests # Name of the job run which will be created
+        name: Test Report # Name of the job run which will be created
         reporter: dotnet-trx # Format of test results
         list-tests: "all"
         fail-on-error: "false"
