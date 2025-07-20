@@ -44,4 +44,4 @@ jobs:
         list-tests: "all"
         fail-on-error: "true"
         #artifact: test-results
-        path: TestResults/test-results.trx
+        path: TestResults/test-results.trx #uses linux path even if windows is used in runs-on

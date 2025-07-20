@@ -50,7 +50,7 @@ namespace MetaSharp.Controllers
         #endregion
         public async Task<PageInfo> GetPageDetailsAsync(string pageId)
         {
-            string url = $"/{pageId}?access_token={accessToken}&fields={Constants.GraphAPI.Page.Fields.ME}";
+            string url = $"/{pageId}?access_token={accessToken}";
             var response = await Helpers.ExecuteGetRequest<string>(url);
             if (string.IsNullOrEmpty(response))
             {
@@ -98,11 +98,11 @@ namespace MetaSharp.Controllers
         {
             try
             {
-                if ((messageLines==null|| messageLines.Any()==false) && string.IsNullOrEmpty(linkToNavigate))
+                if ((messageLines == null || messageLines.Any() == false) && string.IsNullOrEmpty(linkToNavigate))
                 {
                     throw new Exception("You must pass some content to post.");
                 }
-                
+
                 string messagesQuery = messageLines != null && messageLines.Any() ? $"&{formatMessageString(messageLines)}" : "";
                 string linkQuery = string.IsNullOrEmpty(linkToNavigate) == false ? $"&link={linkToNavigate}" : "";
                 string requestUrl = $"/{pageId}/feed?access_token={accessToken}{messagesQuery}{linkQuery}";
