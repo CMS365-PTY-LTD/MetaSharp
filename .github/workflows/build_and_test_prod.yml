@@ -64,3 +64,4 @@ jobs:
         fail-on-error: "false"
         #artifact: test-results
         path: TestResults/test-results.trx # Path to test results (inside artifact .zip)
+        path-replace-backslashes: true
