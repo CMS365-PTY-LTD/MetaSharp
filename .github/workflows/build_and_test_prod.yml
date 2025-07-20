@@ -12,8 +12,8 @@ jobs:
     runs-on: windows-latest
     environment: PROD
     env:
-      PAGEID: ${{ vars.PAGEID }}
-      METAACCESSTOKEN: ${{ secrets.METAACCESSTOKEN }}
+      PAGE_ID: ${{ vars.PAGE_ID }}
+      META_ACCESSTOKEN: ${{ secrets.META_ACCESSTOKEN }}
     permissions:
       checks: write
 
