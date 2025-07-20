@@ -17,14 +17,14 @@ namespace MetaSharp.Tests
         [SetUp]
         public void Setup()
         {
-            facebookController = new(Configuration["METAACCESSTOKEN"]);
+            facebookController = new(Configuration["META_ACCESSTOKEN"]);
         }
         [Test]
         public async Task TestPage()
         {
             try
             {
-                PageInfo pageInfo = await facebookController.GetPageDetailsAsync(Configuration["PAGEID"]);
+                PageInfo pageInfo = await facebookController.GetPageDetailsAsync(Configuration["PAGE_ID"]);
                 Assert.That(pageInfo != null);
             }
             catch (Exception ex)
