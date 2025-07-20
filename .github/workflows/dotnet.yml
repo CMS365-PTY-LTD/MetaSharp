@@ -33,8 +33,6 @@ jobs:
     #   run: dir /a $SLN_FILE
     - name: Restore dependencies
       run: dotnet restore
-    - name: Print env vars
-      run: printenv
     - name: Build
       run: dotnet build --no-restore
     - name: Test
