@@ -11,13 +11,13 @@ namespace MetaSharp.Tests
 
         public FacebookTests()
         {
-            var builder = new ConfigurationBuilder().AddUserSecrets<FacebookTests>().AddEnvironmentVariables();
+            var builder = new ConfigurationBuilder().AddUserSecrets<FacebookTests>();
             Configuration = builder.Build();
         }
         [SetUp]
         public void Setup()
         {
-            facebookController = new(Environment.GetEnvironmentVariable("METAACCESSTOKEN"));
+            facebookController = new(Configuration["METAACCESSTOKEN"]);
         }
 
         [Test]
