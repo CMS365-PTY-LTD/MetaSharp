@@ -50,6 +50,7 @@ jobs:
     - uses: actions/download-artifact@v4
       with:
         name: test-results
+        path: TestResults/
     - name: Initialize Git (for test-reporter)
       run: |
         git init -q  # Silent init
