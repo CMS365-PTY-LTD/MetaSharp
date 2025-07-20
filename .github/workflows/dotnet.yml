@@ -19,6 +19,7 @@ jobs:
     environment: PROD
     env:
       PAGEID: ${{ vars.PAGEID }}
+      METAACCESSTOKEN: ${{ secrets.METAACCESSTOKEN }}
     permissions:
       checks: write
 
