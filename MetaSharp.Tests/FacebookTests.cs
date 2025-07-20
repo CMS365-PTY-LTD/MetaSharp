@@ -19,7 +19,6 @@ namespace MetaSharp.Tests
         {
             facebookController = new(Configuration["METAACCESSTOKEN"]);
         }
-
         [Test]
         public async Task TestPage()
         {
