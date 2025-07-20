@@ -11,7 +11,7 @@ namespace MetaSharp.Tests
 
         public FacebookTests()
         {
-            var builder = new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: false, reloadOnChange: true).AddUserSecrets<FacebookTests>();
+            var builder = new ConfigurationBuilder().AddUserSecrets<FacebookTests>();
             Configuration = builder.Build();
         }
         [SetUp]
