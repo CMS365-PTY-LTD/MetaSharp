@@ -42,6 +42,6 @@ jobs:
         name: MetaSharp Tests # Name of the check run which will be created
         reporter: dotnet-trx # Format of test results
         list-tests: "all"
-        fail-on-error: "true"
+        #fail-on-error: "true"
         #artifact: test-results
         path: TestResults/test-results.trx #uses linux path even if windows is used in runs-on

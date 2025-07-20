@@ -21,11 +21,11 @@ namespace MetaSharp.Tests
         }
 
         [Test]
-        public async Task Test1()
+        public async Task TestPage()
         {
             try
             {
-                PageInfo pageInfo = await facebookController.GetPageDetailsAsync(Configuration["pageId"]);
+                PageInfo pageInfo = await facebookController.GetPageDetailsAsync(Configuration["PAGEID"]);
                 Assert.That(pageInfo != null);
             }
             catch (Exception ex)
