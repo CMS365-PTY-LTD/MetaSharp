@@ -16,6 +16,7 @@ jobs:
       # SLN_FILE: "/home/runner/work/MetaSharp/MetaSharp.sln"
 
     runs-on: windows-latest
+    environment: PROD
     permissions:
       checks: write
 
