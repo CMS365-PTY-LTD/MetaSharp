@@ -25,7 +25,7 @@ namespace MetaSharp.Tests
         {
             try
             {
-                PageInfo pageInfo = await facebookController.GetPageDetailsAsync(Environment.GetEnvironmentVariable("PAGEID"));
+                PageInfo pageInfo = await facebookController.GetPageDetailsAsync(Configuration["PAGEID"]);
                 Assert.That(pageInfo != null);
             }
             catch (Exception ex)
