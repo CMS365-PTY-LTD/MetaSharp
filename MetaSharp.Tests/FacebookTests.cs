@@ -11,7 +11,7 @@ namespace MetaSharp.Tests
 
         public FacebookTests()
         {
-            var builder = new ConfigurationBuilder().AddUserSecrets<FacebookTests>();
+            var builder = new ConfigurationBuilder().AddUserSecrets<FacebookTests>().AddEnvironmentVariables();
             Configuration = builder.Build();
         }
         [SetUp]
