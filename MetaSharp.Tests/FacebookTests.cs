@@ -17,7 +17,7 @@ namespace MetaSharp.Tests
         [SetUp]
         public void Setup()
         {
-            facebookController = new(Configuration["METAACCESSTOKEN"]);
+            facebookController = new(Environment.GetEnvironmentVariable("METAACCESSTOKEN"));
         }
 
         [Test]
