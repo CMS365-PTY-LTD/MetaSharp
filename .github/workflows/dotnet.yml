@@ -36,6 +36,8 @@ jobs:
       run: dotnet test --verbosity normal --logger "trx;LogFileName=test-results.trx" --results-directory "TestResults"
     - name: List TestResults
       run: dir TestResults
+    - name: Print env vars
+      run: printenv
     - name: Test Report
       uses: dorny/test-reporter@v1
       if: success() || failure() # run this step even if previous step failed
@@ -43,6 +45,6 @@ jobs:
         name: MetaSharp Tests # Name of the check run which will be created
         reporter: dotnet-trx # Format of test results
         list-tests: "all"
-        #fail-on-error: "true"
+        fail-on-error: "false"
         #artifact: test-results
         path: TestResults/test-results.trx #uses linux path even if windows is used in runs-on
